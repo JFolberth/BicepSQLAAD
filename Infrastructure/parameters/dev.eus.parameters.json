@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "environmentName":{
+        "value": "dev"
+      },
+      "location":{
+        "value":"eastus"
+      },
+      "storageAccountType":{
+        "value": "Standard_LRS"
+      },
+      "retentionDays":{
+        "value": 30
+      },
+      "sqlAdminGroupObjectId":{
+        "value": "06426855-0419-4cbe-a1d3-6c7151d0d993"
+      },
+      "sqlAdminGroupName":{
+        "value": "SQLServerAdmin"
+      }
+    }
+  }
