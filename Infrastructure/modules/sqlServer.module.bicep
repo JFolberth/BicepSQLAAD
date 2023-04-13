@@ -14,6 +14,8 @@ param logAnalyticsWorkspaceID string
 param storageAccountVulnerabilityEndpoint string
 @description('Storage Account Name for Vulnerability Assessment')
 param storageAccountName string
+@description('Is SQL Defender Enabled')
+param enableSqlDefender bool = false
 
 var blobContributorRoleId = 'ba92f5b4-2d11-453d-a403-e96b0029c9fe'
 /*
@@ -51,7 +53,7 @@ resource sqlServer 'Microsoft.Sql/servers@2022-08-01-preview' = {
 }
 
 
-resource sqlVulnerability 'Microsoft.Sql/servers/vulnerabilityAssessments@2022-08-01-preview' = {
+resource sqlVulnerability 'Microsoft.Sql/servers/vulnerabilityAssessments@2022-08-01-preview' = if (enableSqlDefender) {
   name: 'default'
   parent: sqlServer
   properties: {

@@ -12,6 +12,8 @@ param sqlAdminGroupName string
 param sqlAdminGroupObjectId string
 @description('How many days to retain Log Analytics Logs')
 param retentionDays int
+@description('Name of the SQL Database to create')
+param sqlDBName string = 'sampleDB'
 
 
 targetScope = 'subscription'
@@ -75,3 +77,12 @@ module logAnalytics 'modules/logAnalytics.module.bicep' ={
   }
 }
 
+module sampleDB 'modules/sqlDatabase.module.bicep' ={
+  name: 'sqlDatabaseModule'
+  scope: resourceGroup
+  params:{
+    location: location
+    sqlDBName: sqlDBName
+    serverName: sqlServer.outputs.sqlServerName
+  }
+}
