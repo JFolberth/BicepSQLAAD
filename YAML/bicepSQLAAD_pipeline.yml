@@ -11,4 +11,4 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-    - template: logicapp_template.yml
+    - template: bicepSQLAAD_template.yml
